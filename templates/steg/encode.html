@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encode</title>
+</head>
+<body>
+    <div>
+        <h2>Which algorithm do you want to use?</h2>
+        <a href="{% url 'lsbEncode' %}">
+            <input type="button" value="LSB" id="lsb_enc_button" name="lsb_enc_button">
+        </a>
+        <br>
+        <br>
+        <a href="{% url 'mnfEncode' %}">
+            <input type="button" value="MnF" id="mnf_enc_button" name="mnf_enc_button">
+        </a>
+    </div>
+</body>
+</html>
