@@ -4,5 +4,5 @@ Setgano is a Web-App to implement steganography by hiding or extracting messages
 ## Members
 1. Poorna Hegde
 2. Saniya Bhargava
-3. Sonali R
+3. Sonali R  
 **(ACM NITK Student Chapter)**
