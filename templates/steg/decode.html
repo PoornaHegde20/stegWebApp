@@ -5,20 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>decode</title>
+    <title>Decoder</title>
 </head>
 
 <body>
     <div>
+        <form enctype="multipart/form-data" method="POST" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% comment %}
+            <a href="{% url 'steg:show_image' %}"><input type="submit" value="Upload" /></a>
+            {% endcomment %}
+            <input type="submit" value="Upload" />
+        </form>
+    
+    
+        {% comment %}
         <h2>Which algorithm do you want to use?</h2>
-        <a href="{% url 'steg:lsbDecode' %}">
-            <input type="button" value="LSB" id="lsb_dec_button" name="lsb_dec_button">
+        <a href="{% url 'steg:lsbEncode' %}">
+            <input type="button" value="LSB" id="lsb_enc_button" name="lsb_enc_button">
         </a>
+    
         <br>
         <br>
-        <a href="{% url 'mnfDecode' %}">
-            <input type="button" value="MnF" id="mnf_dec_button" name="mnf_dec_button">
+    
+        <a href="{% url 'steg:mnfEncode' %}">
+            <input type="button" value="MnF" id="mnf_enc_button" name="mnf_enc_button">
         </a>
+        {% endcomment %}
+    
+    </div>
+    <div>
+        {% comment %}
+        {% block includes %}
+        <h2>The secret message is:</h2><br>
+            {{ key }}
+        {% endblock includes %}
+        {% endcomment %}
     </div>
 </body>
 
