@@ -1,9 +1,26 @@
 from django import forms
 
-from steg.models import lsbEncoding
+from steg.models import LSBEncode, LSBDecode
 
 
-class ImageForm(forms.ModelForm):
+class ImageFormEncode(forms.ModelForm):
+    message = forms.CharField(label='Secret Message', max_length=1000)
+    CHOICES = [('LSB', 'LSB'),
+               ('MnF', 'MnF')]
+
+
+    algorithm = forms.ChoiceField(label="Which algorithm do you want to choose?", choices=CHOICES, widget=forms.RadioSelect)
     class Meta:
-        model = lsbEncoding
-        fields = ["inputImageName", "inputImagePath"]
+        model = LSBEncode
+        fields = ["inputImagePath"]
+        
+
+class ImageFormDecode(forms.ModelForm):
+    CHOICES = [('LSB', 'LSB'),
+               ('MnF', 'MnF')]
+
+    algorithm = forms.ChoiceField(label="Which algorithm do you want to choose?", choices=CHOICES, widget=forms.RadioSelect)
+
+    class Meta:
+        model = LSBDecode
+        fields = ["inputImagePath"]
