@@ -22,7 +22,11 @@ class LSBDecode(models.Model):
     id = models.AutoField(primary_key=True)
     inputImagePath = models.FileField(
         upload_to='images/', null=True, verbose_name="")
-    # text = models.TextField(max_length=250)
+    message = models.TextField(max_length=1000, default="")
 
     def __str__(self):
         return str(self.inputImagePath)
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('steg:show_img_decode', kwargs={'id': self.id})
