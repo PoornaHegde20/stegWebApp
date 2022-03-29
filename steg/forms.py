@@ -6,7 +6,7 @@ from steg.models import LSBEncode, LSBDecode
 class ImageFormEncode(forms.ModelForm):
     message = forms.CharField(label='Secret Message', max_length=1000)
     CHOICES = [('LSB', 'LSB'),
-               ('MnF', 'MnF')]
+               ('Addition', 'Addition')]
 
 
     algorithm = forms.ChoiceField(label="Which algorithm do you want to choose?", choices=CHOICES, widget=forms.RadioSelect)
@@ -17,7 +17,7 @@ class ImageFormEncode(forms.ModelForm):
 
 class ImageFormDecode(forms.ModelForm):
     CHOICES = [('LSB', 'LSB'),
-               ('MnF', 'MnF')]
+               ('Addition', 'Addition')]
 
     algorithm = forms.ChoiceField(label="Which algorithm do you want to choose?", choices=CHOICES, widget=forms.RadioSelect)
 
