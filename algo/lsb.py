@@ -3,6 +3,7 @@ import sys
 
 import numpy as np
 from PIL import Image
+from .vigenere import generateKey, cipherText, originalText
 
 np.set_printoptions(threshold=sys.maxsize)
 
@@ -26,15 +27,18 @@ def lsb_decode_algo(source_path):
     hidden_bits = [hidden_bits[i:i+8] for i in range(0, len(hidden_bits), 8)]
 
     message = ""
+    # stego_key_cipher = cipherText("$t3g0","acmnitk")
     for i in range(len(hidden_bits)):
         if message[-5:] == "$t3g0":
             break
         else:
             message += chr(int(hidden_bits[i], 2))
+    # message = originalText(message, "acmnitk")
     if "$t3g0" in message:
         return message[:-5]
     else:
         return ""
+
 
 
 def lsb_encode_algo(source_path, message):
@@ -52,6 +56,7 @@ def lsb_encode_algo(source_path, message):
     total_pixels = array.size//n
 
     message += "$t3g0"
+    # message = cipherText(message, "acmnitk")
     b_message = ''.join([format(ord(i), "08b") for i in message])
     req_pixels = len(b_message)
 
