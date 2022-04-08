@@ -15,8 +15,10 @@ urlpatterns = [
     path('show-image-decode/<int:id>/', views.show_image_decode, name='show_img_decode'),
 
     path('decode', views.index_decode, name='decode'),
-    path('encode', views.index_encode, name='encode'),
-    path('lsbDecode', views.lsbDecode, name='lsbDecode'),
-    path('lsbEncode', views.lsbEncode, name='lsbEncode'),
+    path('encode', views.encode, name='encode'),
+    # path('lsbDecode', views.lsbDecode, name='lsbDecode'),
+    path('lsb-encoder', views.lsb_encode, name='lsb-encoder'),
+    path('addition-encoder', views.addition_encode, name='addition-encoder'),
+
 
 ]

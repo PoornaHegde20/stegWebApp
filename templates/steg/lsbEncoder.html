@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encoder</title>
+    <title>LSB Encoder</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'steg/all.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'steg/slick.css' %}">
@@ -19,10 +19,11 @@
 
 <body style="background-color: rgb(210, 204, 187);  color: #000;">
     <section>
-        <nav class="navbar navbar-expand-md tm-navbar" id="tmNav" style=" background-color: rgb(216, 161, 132);color: #000; margin-top: -10%;">
+        <nav class="navbar navbar-expand-md tm-navbar" id="tmNav"
+            style=" background-color: rgb(216, 161, 132);color: #000; margin-top: -10%;">
             <div class="container">
                 <div class="tm-next">
-                    <a href="{% url 'steg:index' %}" class="navbar-brand" title="Go to Home Page!" style="color: #000;">SETGANO</a>
+                    <a href="{% url 'steg:index' %}" class="navbar-brand" style="color: #000;" title="Go to Home Page!">SETGANO</a>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -33,10 +34,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link tm-nav-link" href="{% url 'steg:encode' %}" style="color: #000;">ENCODE</a>
+                            <a class="nav-link tm-nav-link" href="{% url 'steg:encode' %}"
+                                style="color: #000;">ENCODE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link tm-nav-link" href="{% url 'steg:decode' %}" style="color: #000;">DECODE</a>
+                            <a class="nav-link tm-nav-link" href="{% url 'steg:decode' %}"
+                                style="color: #000;">DECODE</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link tm-nav-link" href="#contact" style="color: #000;">CONTACT US</a>
@@ -47,28 +50,14 @@
         </nav>
     </section>
     <div style="margin: 10%; z-index: -1;">
-            <h1>SETGANO ENCODER</h1>
+        <h1>Welcome to LSB Encoder!</h1><br><br>
+        <h2>Upload any image of your choice and enter the message you want to hide!</h2><br>
+        <form enctype="multipart/form-data" method="POST" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
 
-        <div class="tm-section-pad-top">
-            
-            <h2 style="text-align: center;">Which algorithm would you like to choose for encoding images?</h2><br>
-            <span class="sideButtons">
-                <a href="{% url 'steg:lsb-encoder' %}">
-                    <input type="button" class="button-56 tm-btn-primary"  value="LSB" id="encodeButton"
-                        name="enc_button">
-                </a>
-            </span>
-            
-            <span class="sideButtons" style="position: relative; right: 15%;">
-                <a href="{% url 'steg:addition-encoder' %}">
-                    <input type="button" class="button-56 tm-btn-primary" value="Addition" id="decodeButton"
-                        name="dec_button">
-                </a>
-            </span>
-            
-        
-        
-        </div>
+            <input type="submit" class="button-56 tm-btn-primary" value="Upload" />
+        </form>
 
 
 
